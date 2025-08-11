@@ -86,8 +86,7 @@ varchar(10) "AVI" may or may not be equal to char(10) "AVI" so storing words in 
   - Cannot contain `NULL` values.
   - Only **one primary key** per table (but it can have multiple columns – composite key).
 - Example:
-  ```
-  sql
+  ```sql
   CREATE TABLE Students (
       StudentID INT PRIMARY KEY,
       Name VARCHAR(50),
@@ -100,10 +99,7 @@ varchar(10) "AVI" may or may not be equal to char(10) "AVI" so storing words in 
 - Can have NULL values (unless specified otherwise).
 
 Example:
-```
-sql
-Copy
-Edit
+```sql
 CREATE TABLE Orders (
     OrderID INT PRIMARY KEY,
     StudentID INT,
@@ -113,10 +109,7 @@ CREATE TABLE Orders (
 ### Composite Keys
 You can also have multiple attributes (columns) together as Primary Key or Foreign Key (composite keys).
 Example:
-```
-sql
-Copy
-Edit
+```sql
 CREATE TABLE StudentCourses (
     StudentID INT,
     CourseID INT,
@@ -125,3 +118,50 @@ CREATE TABLE StudentCourses (
     FOREIGN KEY (CourseID) REFERENCES Courses(CourseID)
 );
 ```
+## Understanding Primary Key in SQL
+
+---
+
+### 1. **Definition**
+A **Primary Key** is a column (or set of columns) in a table that **uniquely identifies** each row in that table.
+
+Think of it like a **National ID number**:
+- Every person has a unique ID.
+- No two people share the same ID.
+- An ID must always exist (cannot be empty).
+
+---
+
+### 2. **Rules of Primary Key**
+- **Uniqueness:** No two rows can have the same primary key value.
+- **No NULLs:** Every row must have a value for the primary key.
+- **One per table:** A table can have only one primary key (but it can contain multiple columns – composite key).
+
+---
+
+### 3. **Example**
+```sql
+CREATE TABLE Students (
+    StudentID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Age INT
+);
+```
+Here:
+StudentID is Primary Key.
+It makes sure no two students have the same ID.
+You cannot insert a student without an ID or with an already-used ID.
+
+4. Composite Primary Key
+Sometimes a unique row is identified by more than one column combined.
+
+```sql
+CREATE TABLE Enrollments (
+    StudentID INT,
+    CourseID INT,
+    PRIMARY KEY (StudentID, CourseID)
+);
+```
+Here:
+The combination of (StudentID, CourseID) is unique.
+A student can enroll in multiple courses, but not the same course twice.
