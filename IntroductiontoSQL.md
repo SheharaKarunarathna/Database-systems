@@ -107,6 +107,21 @@ Edit
 CREATE TABLE Orders (
     OrderID INT PRIMARY KEY,
     StudentID INT,
-    FOREIGN KEY (StudentID) REFERENCES Students(StudentID)
+    FOREIGN KEY (StudentID) REFERENCES Students(StudentID) // Here this means the foreign key StudentID should be the primary key of the Students
+);
+```
+### Composite Keys
+You can also have multiple attributes (columns) together as Primary Key or Foreign Key (composite keys).
+Example:
+```
+sql
+Copy
+Edit
+CREATE TABLE StudentCourses (
+    StudentID INT,
+    CourseID INT,
+    PRIMARY KEY (StudentID, CourseID),
+    FOREIGN KEY (StudentID) REFERENCES Students(StudentID),
+    FOREIGN KEY (CourseID) REFERENCES Courses(CourseID)
 );
 ```
