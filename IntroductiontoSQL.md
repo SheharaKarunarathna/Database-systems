@@ -73,3 +73,5 @@ SQL data types define the kind of values a column can store.
 **Note:**  
 - Available data types can vary slightly depending on the SQL database (MySQL, PostgreSQL, SQL Server, Oracle).
 - Always choose the smallest data type that can hold your data efficiently.
+
+varchar(10) "AVI" may or may not be equal to char(10) "AVI" so storing words in varchar mode is recommended. 
