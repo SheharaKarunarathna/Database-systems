@@ -247,3 +247,55 @@ Example:
 SELECT DISTINCT Age FROM Students;
 ```
 Result: Returns each distinct age only once, even if multiple students share the same age.
+
+## FROM Clause & WHERE Clause in SQL
+---
+
+### 1. FROM Clause
+- **Purpose:** Specifies the **table(s)** from which to retrieve data.
+- Always comes **after** `SELECT` and **before** `WHERE` (if used).
+- Syntax:
+  ```sql
+  SELECT column1, column2
+  FROM table_name;
+
+Example:
+```sql
+SELECT Name, Age
+FROM Students;
+```
+Result: Retrieves Name and Age from the Students table.
+
+### 2. WHERE Clause
+- **Purpose:** Filters rows based on a condition.
+Only rows that satisfy the condition are returned.
+Syntax:
+```sql
+SELECT column1, column2
+FROM table_name
+WHERE condition;
+```
+Example:
+
+```sql
+SELECT Name, Age
+FROM Students
+WHERE Age >= 18;
+```
+Result: Retrieves Name and Age only for students aged 18 or older.
+
+Combined Example:
+```sql
+SELECT Name, Age
+FROM Students
+WHERE Age >= 18 AND Name LIKE 'A%';
+```
+FROM Students → fetches data from Students table.
+
+WHERE Age >= 18 AND Name LIKE 'A%' → only students aged 18+ whose name starts with 'A'.
+```
+Summary Table
+Clause	Purpose	Position in Query
+FROM	Selects the table(s) to query from	After SELECT
+WHERE	Filters rows based on a condition	After FROM clause
+```
