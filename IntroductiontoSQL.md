@@ -176,7 +176,7 @@ A student can enroll in multiple courses, but not the same course twice.
 ```sql
 DROP TABLE table_name;
 ```
-2. **DELETE**
+### 2. **DELETE**
 Removes data from a table but keeps the table structure.
 Can delete specific rows using WHERE or all rows if WHERE is omitted.
 
@@ -189,7 +189,7 @@ Example:
 DELETE FROM Students WHERE Age < 18;  -- Deletes only students younger than 18
 DELETE FROM Students;                 -- Deletes all rows, table remains
 ```
-3. ALTER TABLE
+### 3. ALTER TABLE
 Changes the structure of an existing table.
 Common uses:
 
@@ -209,3 +209,41 @@ Drop a column:
 ```sql
 ALTER TABLE Students DROP COLUMN Email;
 ```
+## SELECT, SELECT *, and SELECT DISTINCT in SQL
+
+---
+
+### 1. SELECT
+- Retrieves **specific columns** from a table.
+- Use when you want to fetch only certain fields.
+- Syntax:
+```sql
+  SELECT column1, column2 FROM table_name;
+```
+### 2. SELECT * (Select All)
+Retrieves all columns from a table.
+Use when you want every column without listing them individually.
+Syntax:
+
+```sql
+SELECT * FROM table_name;
+```
+Example:
+```sql
+SELECT * FROM Students;
+```
+Result: Returns all columns (StudentID, Name, Age, etc.) for all rows.
+### 3. SELECT DISTINCT
+Retrieves unique rows based on the specified columns.
+Removes duplicate entries in the result.
+Syntax:
+
+```sql
+SELECT DISTINCT column1, column2 FROM table_name;
+```
+Example:
+
+```sql
+SELECT DISTINCT Age FROM Students;
+```
+Result: Returns each distinct age only once, even if multiple students share the same age.
