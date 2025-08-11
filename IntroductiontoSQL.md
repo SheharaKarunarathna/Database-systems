@@ -75,3 +75,38 @@ SQL data types define the kind of values a column can store.
 - Always choose the smallest data type that can hold your data efficiently.
 
 varchar(10) "AVI" may or may not be equal to char(10) "AVI" so storing words in varchar mode is recommended. 
+## Primary Key & Foreign Key in SQL
+
+---
+
+### 1. **Primary Key**
+- A column (or set of columns) that **uniquely identifies** each row in a table.
+- Rules:
+  - Must contain **unique** values.
+  - Cannot contain `NULL` values.
+  - Only **one primary key** per table (but it can have multiple columns – composite key).
+- Example:
+  ```
+  sql
+  CREATE TABLE Students (
+      StudentID INT PRIMARY KEY,
+      Name VARCHAR(50),
+      Age INT
+  );
+  
+### 2. **Foreign Key**
+- A column in one table that refers to the primary key in another table.
+- Used to maintain referential integrity between tables.
+- Can have NULL values (unless specified otherwise).
+
+Example:
+```
+sql
+Copy
+Edit
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY,
+    StudentID INT,
+    FOREIGN KEY (StudentID) REFERENCES Students(StudentID)
+);
+```
