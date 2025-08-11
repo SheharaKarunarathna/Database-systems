@@ -165,3 +165,47 @@ CREATE TABLE Enrollments (
 Here:
 The combination of (StudentID, CourseID) is unique.
 A student can enroll in multiple courses, but not the same course twice.
+## DROP, DELETE, and ALTER TABLE in SQL
+
+---
+
+### 1. **DROP**
+- Completely **removes a table** (structure + all data).
+- Once dropped, the table is gone and cannot be recovered (unless backed up).
+- Syntax:
+```sql
+DROP TABLE table_name;
+```
+2. **DELETE**
+Removes data from a table but keeps the table structure.
+Can delete specific rows using WHERE or all rows if WHERE is omitted.
+
+Syntax:
+```sql
+DELETE FROM table_name WHERE condition;
+Example:
+```
+```sql
+DELETE FROM Students WHERE Age < 18;  -- Deletes only students younger than 18
+DELETE FROM Students;                 -- Deletes all rows, table remains
+```
+3. ALTER TABLE
+Changes the structure of an existing table.
+Common uses:
+
+Add a column:
+```sql
+ALTER TABLE Students ADD Email VARCHAR(100);
+```
+Modify a column:
+```sql
+ALTER TABLE Students MODIFY Name VARCHAR(100);
+Rename a column (MySQL example):
+```
+```sql
+ALTER TABLE Students RENAME COLUMN Name TO FullName;
+```
+Drop a column:
+```sql
+ALTER TABLE Students DROP COLUMN Email;
+```
