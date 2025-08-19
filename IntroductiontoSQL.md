@@ -299,3 +299,14 @@ Clause	Purpose	Position in Query
 FROM	Selects the table(s) to query from	After SELECT
 WHERE	Filters rows based on a condition	After FROM clause
 ```
+## Counting Rows
+``` sql
+SELECT COUNT(*) AS TotalCities
+FROM City;
+```
+
+## Counting distinct IDs
+```sql
+SELECT COUNT(DISTINCT ID) AS UniqueIDs
+FROM City;
+```
