@@ -310,3 +310,21 @@ FROM City;
 SELECT COUNT(DISTINCT ID) AS UniqueIDs
 FROM City;
 ```
+## Creating a view
+A view in SQL looks like a table, but it’s not a real, physical table.
+* A table stores actual data on disk.
+* A view is like a saved query (a virtual table).
+When you query a view, the database runs the underlying SQL and shows you the result.
+The data isn’t stored separately (unless it’s a materialized view, which MySQL doesn’t support natively).
+```sql
+CREATE VIEW student_grades AS
+SELECT student.ID, student.name, takes.course_id, takes.grade
+FROM student
+INNER JOIN takes
+    ON student.ID = takes.ID;
+
+SELECT name
+FROM student_grades
+WHERE grade = 'A' AND course_id = 'BIO-101';
+
+```
