@@ -328,3 +328,88 @@ FROM student_grades
 WHERE grade = 'A' AND course_id = 'BIO-101';
 
 ```
+## Joins in SQL
+1.  INNER JOIN  
+    * Returns rows that have matching values in both tables.
+    ```mysql
+    SELECT s.student_id, s.name, e.course_id
+    FROM Students s
+    INNER JOIN Enrollments e
+    ON s.student_id = e.student_id;
+    ```
+2. OUTER JOIN  
+   * Returns matching rows plus non-matching rows (fills with NULL).  
+   * All from left table + matches
+### Example  
+```
+Students
++------------+-------+  
+| student_id | name  |  
++------------+-------+  
+| 1          | Alice |  
+| 2          | Bob   |  
+| 3          | Carol |  
++------------+-------+  
+
+Enrollments
++------------+----------+
+| student_id | course   |
++------------+----------+
+| 1          | Math     |
+| 2          | Science  |
+| 4          | History  |
++------------+----------+
+```
+#### Left outer join
+```mysql
+SELECT s.student_id, s.name, e.course
+FROM Students s
+LEFT JOIN Enrollments e
+ON s.student_id = e.student_id;
+```
+```
+Result:
++------------+-------+---------+
+| student_id | name  | course  |
++------------+-------+---------+
+| 1          | Alice | Math    |
+| 2          | Bob   | Science |
+| 3          | Carol | NULL    |
++------------+-------+---------+
+```
+#### Right outer join
+```mysql
+SELECT s.student_id, s.name, e.course
+FROM Students s
+RIGHT JOIN Enrollments e
+ON s.student_id = e.student_id;
+```
+```
+Result:
++------------+-------+---------+
+| student_id | name  | course  |
++------------+-------+---------+
+| 1          | Alice | Math    |
+| 2          | Bob   | Science |
+| 4          | NULL  | History |
++------------+-------+---------+
+```
+
+#### Full outer join
+```mysql
+SELECT s.student_id, s.name, e.course
+FROM Students s
+FULL OUTER JOIN Enrollments e
+ON s.student_id = e.student_id;
+```
+```
+Result:
++------------+-------+---------+
+| student_id | name  | course  |
++------------+-------+---------+
+| 1          | Alice | Math    |
+| 2          | Bob   | Science |
+| 3          | Carol | NULL    |
+| 4          | NULL  | History |
++------------+-------+---------+
+```
