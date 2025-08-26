@@ -310,7 +310,7 @@ FROM City;
 SELECT COUNT(DISTINCT ID) AS UniqueIDs
 FROM City;
 ```
-## Creating a view
+## Views in sql
 A view in SQL looks like a table, but it’s not a real, physical table.
 * A table stores actual data on disk.
 * A view is like a saved query (a virtual table).
@@ -413,3 +413,35 @@ Result:
 | 4          | NULL  | History |
 +------------+-------+---------+
 ```
+## Insert
+1. Insert a single row  
+```mysql
+INSERT INTO Students (student_id, name, age)
+VALUES (1, 'Alice', 20);
+```
+2. Insert multiple rows at once
+```mysql
+INSERT INTO Students (student_id, name, age)
+VALUES 
+(2, 'Bob', 21),
+(3, 'Carol', 19);
+```
+3. Insert into multiple columns
+```mysql
+INSERT INTO Students
+VALUES (4, 'David', 22);
+```
+4. Insert with only some columns
+```mysql
+INSERT INTO Students (student_id, name)
+VALUES (5, 'Eve');
+```
+5. Insert from another table
+```mysql
+INSERT INTO Students (student_id, name, age)
+SELECT id, fullname, years
+FROM Old_Students;
+```
+* Always specify column names (best practice).
+* If you try to insert a duplicate PRIMARY KEY, you’ll get an error.
+* You can use INSERT IGNORE to skip duplicates, or INSERT ... ON DUPLICATE KEY UPDATE to update instead.
